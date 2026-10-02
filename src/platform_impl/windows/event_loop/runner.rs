@@ -7,7 +7,7 @@ use std::{
   cell::{Cell, RefCell},
   collections::{HashSet, VecDeque},
   mem, panic,
-  rc::Rc,
+  sync::Arc,
   time::Instant,
 };
 
@@ -24,7 +24,7 @@ use crate::{
   window::WindowId,
 };
 
-pub(crate) type EventLoopRunnerShared<T> = Rc<EventLoopRunner<T>>;
+pub(crate) type EventLoopRunnerShared<T> = Arc<EventLoopRunner<T>>; // PORTMASTER PATCH: atomic refcount, see README.md
 pub(crate) struct EventLoopRunner<T: 'static> {
   // The event loop's win32 handles
   thread_msg_target: HWND,

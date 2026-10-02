@@ -197,3 +197,9 @@ pub(crate) fn extract_width_height(size: dpi::Size) -> (PixelUnit, PixelUnit) {
     ),
   }
 }
+
+/// Portmaster patch marker. This crate is the patched fork
+/// <https://github.com/safing/portmaster-tauri-tao-patch>, see its README.md.
+/// Portmaster asserts this constant at compile time so the patch cannot be
+/// dropped silently by a dependency update. Bump when the patch content changes.
+pub const PORTMASTER_PATCH_LEVEL: u32 = 1;
